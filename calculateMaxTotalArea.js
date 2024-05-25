@@ -1,6 +1,4 @@
-
 function getMaxTotalArea(sideLengths) {
-
     const MOD = 10**9 + 7;
 
     sideLengths.sort((a, b) => b - a);
@@ -46,5 +44,4 @@ function getMaxTotalArea(sideLengths) {
     return result;
 }
 
-const sideLengths = [2, 6, 6, 2, 3, 5];
-console.log(getMaxTotalArea(sideLengths));
+module.exports = getMaxTotalArea;
