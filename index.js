@@ -1,3 +1,19 @@
+const Matrix = require("./challenge/rotate-matrix-1.7");
+const matrix = new Matrix();
+
+const matrixParam = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16],
+];
+
+console.log("without rotate", matrixParam);
+
+const result = matrix.rotate(matrixParam);
+
+console.log("rotate", matrixParam);
+
 /** 
  * exectar testes na classe Compression
 const StringCompressor = require("./challenge/string-compression-1.6");
