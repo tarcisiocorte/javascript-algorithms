@@ -14,21 +14,21 @@ function isUniqueCharsNoDataStructure(str) {
 }
 
 // assumindo que é de a - z
-function isUniqueCharsBitVector(str){
-    // inicializa o checker
-    let checker = 0;
-    // itera sobre cada caractere da string
-    for(let i = 0; i < str.length; i++){
-        // Calcula o valor do caractere atual
-        let val = str.charCodeAt(i) - 'a'.charCodeAt(0);
-        // Verifica se o caractere já foi encontrado
-        if((checker & (1 << val)) > 0){
-            // Se sim, retorna falso
-            return false;
-        }
-        //seta o bit correspondente ao caractere no vetor de bits
-        checker |= (1 << val);
+function isUniqueCharsBitVector(str) {
+  // inicializa o checker
+  let checker = 0;
+  // itera sobre cada caractere da string
+  for (let i = 0; i < str.length; i++) {
+    // Calcula o valor do caractere atual
+    let val = str.charCodeAt(i) - "a".charCodeAt(0);
+    // Verifica se o caractere já foi encontrado
+    if ((checker & (1 << val)) > 0) {
+      // Se sim, retorna falso
+      return false;
     }
-    // retorna true se não houver caracteres repetidos
-    return true;
+    //seta o bit correspondente ao caractere no vetor de bits
+    checker |= 1 << val;
+  }
+  // retorna true se não houver caracteres repetidos
+  return true;
 }
