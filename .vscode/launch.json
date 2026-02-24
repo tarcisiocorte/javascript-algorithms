@@ -7,11 +7,39 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Run index.js (auto choice: LinkedList)",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/index.js"
+            "program": "${workspaceFolder}/index.js",
+            "args": ["1"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run index.js (interactive)",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/index.js",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+        ,
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Jest: linkedList.test.js",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "args": ["linked-lists/linkedList.test.js", "--runInBand"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "neverOpen",
+            "windows": {
+                "program": "${workspaceFolder}\\node_modules\\jest\\bin\\jest.js"
+            }
         }
     ]
 }
