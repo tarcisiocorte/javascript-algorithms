@@ -1,61 +1,86 @@
-const Matrix = require("./challenge/rotate-matrix-1.7");
-const matrix = new Matrix();
+// Simple interactive menu to run small examples from the repo.
+// Options:
+// 1 - LinkedList example
+// 2 - Two-pointer (containerWithMostWater) example
+// 3 - Cyclic-sort (firstMissingPositive) example
 
-const matrixParam = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12],
-  [13, 14, 15, 16],
-];
+const readline = require("readline");
 
-console.log("without rotate", matrixParam);
+// Prefer the CommonJS-friendly linked list implementation.
+const LinkedList = require("./linked-lists/linkedList.js");
+const calculateContainerWithMostWater = require("./two-pointer/containerWithMostWater");
+const firstMissingPositive = require("./cyclic-sort/firstMissingPositive");
 
-const result = matrix.rotate(matrixParam);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-console.log("rotate", matrixParam);
+function showMenu() {
+  console.log('\nChoose an example to run:');
+  console.log('1) LinkedList example');
+  console.log('2) Two-pointer (containerWithMostWater) example');
+  console.log('3) Cyclic-sort (firstMissingPositive) example');
+  console.log('0) Exit');
 
-/** 
- * exectar testes na classe Compression
-const StringCompressor = require("./challenge/string-compression-1.6");
-const compressor = new StringCompressor();
+  rl.question('Enter choice: ', (answer) => {
+    handleChoice(answer.trim());
+  });
+}
 
-//console.log(compressor.compressBad("aabcccccaaa")); // Output: a2b1c5a3
-console.log(compressor.compressString("aabcccccaaa")); // Output: a2b1c5a3
+function handleChoice(choice) {
+  switch (choice) {
+    case '1':
+      runLinkedListExample();
+      break;
+    case '2':
+      runTwoPointerExample();
+      break;
+    case '3':
+      runCyclicSortExample();
+      break;
+    default:
+      console.log('Exiting.');
+      rl.close();
+  }
+}
 
-console.log(compressor.compressBad("abc")); // Output: abc
-console.log(compressor.compressString("abc")); // Output: abc
+function runLinkedListExample() {
+  console.log('\nRunning LinkedList example...');
+  const list = new LinkedList();
+  list.add(10);
+  list.add(20);
+  list.add(30);
+  list.add(15);
+  list.print();
+  list.remove(10);
+  list.print();
+  rl.close();
+}
 
-console.log(compressor.compressBad("aabbcc")); // Output: aabbcc
-console.log(compressor.compressString("aabbcc")); // Output: aabbcc
+function runTwoPointerExample() {
+  console.log('\nRunning two-pointer (containerWithMostWater) example...');
+  const heights = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+  const area = calculateContainerWithMostWater(heights.slice());
+  console.log('Heights:', heights);
+  console.log('Max area:', area);
+  rl.close();
+}
 
-console.log(compressor.compressBad("aaAAaa")); // Output: a2A2a2
-console.log(compressor.compressString("aaAAaa")); // Output: a2A2a2
-***/
+function runCyclicSortExample() {
+  console.log('\nRunning cyclic-sort (firstMissingPositive) example...');
+  const nums = [3, 4, -1, 1];
+  const missing = firstMissingPositive(nums.slice());
+  console.log('Nums:', nums);
+  console.log('First missing positive:', missing);
+  rl.close();
+}
 
-/***
- * 
- *  
-const OneWay = require("./challenge/one-way-1.5");
-const oneway = new OneWay();
-const input1 = "pale";
-const input2 = "ple";
-const result = oneway.oneEditAwayOptimized(input1, input2);
-console.log(`"${input1}", "${input2}": ${result}`);
-
-**/
-
-/** 
-const PalindromePermutation = require('./challenge/pallindrome-permutation');
-
-// Exemplo de uso
-const input = "Tact Coa";
-  
-//const result1 = PalindromePermutation.isPermutationOfPalindromeSolution1(input);
-//console.log(`Solução 1: "${input}" é uma permutação de um palíndromo? ${result1}`);
-
-//const result2 = PalindromePermutation.isPermutationOfPalindromeSolution2(input);
-//console.log(`Solução 2: "${input}" é uma permutação de um palíndromo? ${result2}`);
-
-const result3 = PalindromePermutation.isPermutationOfPalindromeSolution3(input);
-console.log(`Solução 3: "${input}" é uma permutação de um palíndromo? ${result3}`);
-***/
+// If a CLI argument is provided (e.g. `node index.js 1`) run that choice directly.
+// This makes it easier to debug from VS Code (use the auto-choice launch configuration).
+const cliChoice = process.argv[2];
+if (cliChoice) {
+  handleChoice(cliChoice);
+} else {
+  showMenu();
+}

@@ -26,6 +26,13 @@ class LinkedList {
     this.size++;
   }
 
+  addFirst(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.size++;
+  }
+
   remove(value) {
     if (!this.head) return null;
     if (this.head.value === value) {
