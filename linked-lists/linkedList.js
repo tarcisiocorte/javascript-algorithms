@@ -50,7 +50,24 @@ class LinkedList {
     }
   }
 
-  get(index){
+  removeAt(index) {
+    if (index < 0 || index >= this.size) {
+      throw new Error('Index out of bounds');
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let current = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        current = current.next;
+      }
+      current.next = current.next.next;
+    }
+    this.size--;
+  }
+
+  get(index) {
     if (index < 0 || index >= this.size) {
       throw new Error('Index out of bounds');
     }
