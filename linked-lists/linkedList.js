@@ -50,6 +50,17 @@ class LinkedList {
     }
   }
 
+  get(index){
+    if (index < 0 || index >= this.size) {
+      throw new Error('Index out of bounds');
+    }
+    let current = this.head;
+    for (let i = 0; i < index; i++) { // with i < index the interation stop when i is the right index
+      current = current.next;
+    }
+    return current.value;
+  }
+
   print() {
     let current = this.head;
     console.log("Start of list");
