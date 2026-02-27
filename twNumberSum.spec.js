@@ -1,3 +1,5 @@
+const twNumberSum = require('./twNumberSum');
+
 describe("twNumberSum", function () {
   it("should return 0 if input is empty", function () {
     expect(twNumberSum([])).toEqual(0);
